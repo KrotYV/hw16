@@ -1,0 +1,30 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1>Post title: {{ post.title }}</h1>
+<style>
+.raz div {
+  min-height: 2em;
+  margin-right: 0em;
+  border: 1px solid black;
+  background: #e6e6fa;
+}
+</style>
+
+  <p><strong>Author:</strong> {{ post.author }}</p>
+  <p><strong>Brief description:</strong> {{ post.brief_description }}</p>
+  <p><strong>Image:</strong> <img src="{{ post.image }}" class="img-fluid" alt="..."></p>
+  <p><strong>Full description:</strong> {{ post.full_description }}</p>
+<p>
+<div class="raz">
+  <div><p><strong>Comments:</strong>
+        {% for comment in object.comment_set.all %}
+        <ul>
+            <em>{{ comment.username }}</em>: {{ comment.text }}
+        </ul>
+
+        {% endfor %}
+  </div>
+</div>
+
+{% endblock %}
